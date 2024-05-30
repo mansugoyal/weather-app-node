@@ -1,4 +1,5 @@
 import express, { Request, Response } from 'express';
+import weatherRoutes from './src/routes/weatherRoutes';
 import cookieParser from 'cookie-parser';
 import AppDataSource from './src/config/db';
 import cors from 'cors';
@@ -27,6 +28,9 @@ AppDataSource.initialize()
 app.get('/', (req: Request, res: Response) => {
     res.send('Hello World!');
 });
+
+// Routes
+app.use(weatherRoutes);
 
 // Start the server after the Data Source is initialized
 app.listen(port, () => {
