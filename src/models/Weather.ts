@@ -5,18 +5,18 @@ export class Weather {
     @PrimaryGeneratedColumn()
     id!: number
 
-    @Column()
-    lat!: string
+    @Column({ type: 'float' })
+    latitude!: number
 
-    @Column()
-    long!: string
+    @Column({ type: 'float' })
+    longitude!: number
 
-    @Column()
-    apiOutput!: string
+    @Column({ type: 'json' })
+    apiOutput!: any
 
-    @Column({ type: "datetime" })
+    @Column({ type: "datetime", default: () => "CURRENT_TIMESTAMP" })
     createdAt!: Date
 
-    @Column({ type: "datetime" })
+    @Column({ type: "datetime", default: () => "CURRENT_TIMESTAMP", onUpdate: "CURRENT_TIMESTAMP" })
     updatedAt!: Date
 }

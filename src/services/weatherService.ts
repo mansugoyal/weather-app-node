@@ -12,15 +12,18 @@ if (!apiKey) {
 }
 
 let weatherService = {
-    getWeatherByCoords: async (lat: number, lon: number) => {
+    getWeatherByCoords: async (lat: number, lon: number, city: string) => {
         try {
-            const response = await axios.get(`${baseURL}/weather`, {
+            let response = await axios.get(`${baseURL}/weather`, {
                 params: {
                     lat: lat,
                     lon: lon,
                     appid: apiKey,
+                    units: 'metric',
+                    q: city
                 },
             });
+            console.log('getWeatherByCoords',response.data);
             return response.data;
         } catch (error) {
             throw new Error('An unexpected error occurred');

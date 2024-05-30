@@ -15,15 +15,6 @@ const port = process.env.PORT;
 app.use(cookieParser());
 app.use(cors());
 
-// Initialize the Data Source and start the server
-AppDataSource.initialize()
-    .then(() => {
-        console.log("Data Source has been initialized!");
-    })
-    .catch((err) => {
-        console.error("Error during Data Source initialization:", err);
-    });
-
 // Set up routes and other middleware here
 app.get('/', (req: Request, res: Response) => {
     res.send('Hello World!');

@@ -23,4 +23,13 @@ const AppDataSource = new DataSource({
     subscribers: [],
 })
 
+// Initialize the Data Source and start the server
+AppDataSource.initialize()
+    .then(() => {
+        console.log("Data Source has been initialized!");
+    })
+    .catch((err) => {
+        console.error("Error during Data Source initialization:", err);
+    });
+
 export default AppDataSource;
