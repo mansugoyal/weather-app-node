@@ -4,6 +4,7 @@ import cookieParser from 'cookie-parser';
 import AppDataSource from './src/config/db';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import path from 'path';
 
 // Load environment variables from .env file
 dotenv.config();
@@ -15,9 +16,13 @@ const port = process.env.PORT;
 app.use(cookieParser());
 app.use(cors());
 
+// Set EJS as the view engine
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'src/views')); // Assuming your views are in a folder named 'views'
+
 // Set up routes and other middleware here
 app.get('/', (req: Request, res: Response) => {
-    res.send('Hello World!');
+    res.render('weather');
 });
 
 // Routes
